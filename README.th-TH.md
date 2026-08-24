@@ -135,7 +135,7 @@ Dragonfly รองรับ argument ส่วนใหญ่ของ Redis �
 
 ตอนนี้ Dragonfly รองรับ argument เฉพาะของ Redis ดังนี้:
  * `port`: พอร์ตสำหรับเชื่อมต่อแบบ Redis (`ค่าเริ่มต้น: 6379`)
- * `bind`: ใช้ `localhost` เพื่อให้เชื่อมต่อได้เฉพาะจากเครื่องตัวเอง หรือใส่ public IP เพื่อให้เชื่อมต่อได้จาก **IP นั้น ๆ** (รวมถึงจากภายนอกด้วย) ส่วน `0.0.0.0` จะเปิดรับทุก IPv4
+ * `bind`: ใช้ `localhost` เพื่อรับการเชื่อมต่อเฉพาะจากเครื่องตัวเอง หรือใส่ public IP เพื่อให้ client เชื่อมต่อมาที่ **IP นั้น ๆ** ได้ (รวมถึงจากภายนอกด้วย) ส่วน `0.0.0.0` จะเปิดรับทุก IPv4
  * `requirepass`: password สำหรับยืนยันตัวตนผ่าน AUTH (`ค่าเริ่มต้น: ""`)
  * `maxmemory`: เพดานหน่วยความจำสูงสุด (หน่วยเป็น byte แบบอ่านง่าย) ที่ database จะใช้ (`ค่าเริ่มต้น: 0`) ถ้าตั้งเป็น `0` โปรแกรมจะคำนวณเพดานหน่วยความจำให้เองอัตโนมัติ
  * `dir`: Dragonfly เวอร์ชัน Docker ใช้โฟลเดอร์ `/data` สำหรับเก็บ snapshot เป็นค่าเริ่มต้น ส่วน CLI ใช้ `""` คุณใช้ออปชัน `-v` ของ Docker เพื่อ map ไปยังโฟลเดอร์บนเครื่อง host ได้
@@ -201,7 +201,7 @@ Expiration deadline ที่ละเอียดถึงระดับ milli
 
 เข้า URL `:6379/metrics` เพื่อดู metric ที่รองรับ Prometheus
 
-metric ที่ export ออกมาจาก Prometheus เข้ากันได้กับ Grafana dashboard [ดูตัวอย่างได้ที่นี่](tools/local/monitoring/grafana/provisioning/dashboards/dragonfly.json)
+metric ที่ Dragonfly export ออกมาในรูปแบบที่ Prometheus รองรับ เข้ากันได้กับ Grafana dashboard [ดูตัวอย่างได้ที่นี่](tools/local/monitoring/grafana/provisioning/dashboards/dragonfly.json)
 
 
 สำคัญ! HTTP console ควรเข้าถึงได้เฉพาะภายใน network ที่ปลอดภัยเท่านั้น ถ้าคุณเปิดพอร์ต TCP ของ Dragonfly ออกสู่ภายนอก แนะนำให้ปิด console นี้ด้วย `--http_admin_console=false` หรือ `--nohttp_admin_console`
